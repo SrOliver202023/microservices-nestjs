@@ -1,14 +1,19 @@
 import { Module } from '@nestjs/common';
-import { SignupService } from "../services";
-import { SignupController } from "../controllers";
-import { EncryptionAdapterProvider, UserRepositoryProvider } from "../providers";
+import { SigninService, SignupService } from "../services";
+import { SigninController, SignupController } from "../controllers";
+import { EncryptionAdapterProvider, TokenAdapterProvider, UserRepositoryProvider } from "../providers";
 
 @Module({
-  controllers: [SignupController],
+  controllers: [
+    SignupController,
+    SigninController
+  ],
   providers: [
     EncryptionAdapterProvider,
     UserRepositoryProvider,
-    SignupService
+    SignupService,
+    SigninService,
+    TokenAdapterProvider
   ],
 })
 export class AuthModule {}

@@ -10,6 +10,6 @@ export class EncryptionService implements IEncryptionAdapter {
   }
 
   async compare (value: string, hash: string): Promise<boolean> {
-    return await this.compare(value, hash)
+    return await bcrypt.compare(value, hash)
   }
 }

@@ -17,7 +17,7 @@ export class SignupService implements ISignupUseCase.Method {
     await this.emailSenderClient.connect();
   }
 
-  async execute (data: IUserRepository.Params.Create): Promise<ISignupUseCase.View> {
+  async execute (data: ISignupUseCase.DTO): Promise<ISignupUseCase.View> {
     const userAlreadyExists = await this.userRepository.findOne({ email: data.email })
     if (userAlreadyExists) {
       throw new BadRequestException('User with e-mail already exists')
