@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  pg-trad:
+    image: postgres:latest
+    container_name: postgres-trad
+    environment:
+      - POSTGRES_USER=trad
+      - POSTGRES_PASSWORD=@Trad
+      - POSTGRES_DB=trad
+    ports:
+      - "7123:5432"
+    volumes:
+      - pg-trad:/var/lib/postgresql/data
+
+  mg-trad:
+    image: mongo:latest
+    container_name: mg-trad
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=trad
+      - MONGO_INITDB_ROOT_PASSWORD=@Trad
+    ports:
+      - "8223:27017"
+    volumes:
+      - mg-trad:/data/db
+      - mg-trad:/data/configdb
+
+  rmq-trad:
+    image: rabbitmq:management
+    container_name: rabbitmql-trad
+    environment:
+      - RABBITMQ_DEFAULT_USER=trad
+      - RABBITMQ_DEFAULT_PASS=@Trad
+    ports:
+      - "9323:5672"
+      - "15672:15672"
+    volumes:
+      - rmq-trad:/var/lib/rabbitmq
+
+volumes:
+  pg-trad:
+  mg-trad:
+  rmq-trad:
