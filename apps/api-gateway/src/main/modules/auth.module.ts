@@ -13,7 +13,6 @@ import { EncryptionAdapterProvider, TokenAdapterProvider, UserRepositoryProvider
     UserRepositoryProvider,
     SignupService,
     SigninService,
-    TokenAdapterProvider
   ],
 })
 export class AuthModule {}

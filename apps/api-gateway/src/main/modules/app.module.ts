@@ -3,6 +3,8 @@ import { ClientsModule, Transport } from "@nestjs/microservices";
 import { AuthModule } from "./auth.module";
 import { ConfigModule } from "@nestjs/config";
 import { PrismaService } from "../infra";
+import { UserModule } from "./user.module";
+import { TokenAdapterProvider } from "../providers";
 
 @Global()
 @Module({
@@ -19,10 +21,11 @@ import { PrismaService } from "../infra";
         }
       },
     ]),
-    AuthModule
+    AuthModule,
+    UserModule
   ],
   controllers: [],
-  providers: [PrismaService],
+  providers: [PrismaService, TokenAdapterProvider],
   exports: [
     PrismaService,
     ClientsModule.register([
@@ -34,6 +37,7 @@ import { PrismaService } from "../infra";
         }
       },
     ]),
+    TokenAdapterProvider
   ]
 })
 export class AppModule {}

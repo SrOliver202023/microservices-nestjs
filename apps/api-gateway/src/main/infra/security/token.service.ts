@@ -15,11 +15,7 @@ export class TokenService implements ITokenAdapter {
     return JWT.decode(token, { complete: true, json: true })
   }
 
-  async validate (payload: string, secretKey: string): Promise<object | 'ERROR'> {
-    try {
-      return JWT.verify(payload, secretKey, { complete: true })
-    } catch (error) {
-      return "ERROR"
-    }
+  async validate (payload: string, secretKey: string): Promise<{ header: any, payload: any }> {
+    return JWT.verify(payload, secretKey, { complete: true })
   }
 }
