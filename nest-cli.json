@@ -6,28 +6,28 @@
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
-    "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
+    "tsConfigPath": "apps/backend-service/tsconfig.app.json"
   },
   "monorepo": true,
-  "root": "apps/api-gateway",
+  "root": "apps/backend-service",
   "projects": {
-    "api-gateway": {
+    "backend-service": {
       "type": "application",
-      "root": "apps/api-gateway",
+      "root": "apps/backend-service",
       "entryFile": "src/main/main",
       "sourceRoot": "./",
       "compilerOptions": {
-        "tsConfigPath": "apps/api-gateway/tsconfig.app.json",
+        "tsConfigPath": "apps/backend-service/tsconfig.app.json",
         "watchAssets": true
       }
     },
-    "email-sender": {
+    "notification-service": {
       "type": "application",
-      "root": "apps/email-sender",
+      "root": "apps/notification-service",
       "entryFile": "src/main",
       "sourceRoot": "./",
       "compilerOptions": {
-        "tsConfigPath": "apps/email-sender/tsconfig.app.json",
+        "tsConfigPath": "apps/notification-service/tsconfig.app.json",
         "watchAssets": true
       }
     },

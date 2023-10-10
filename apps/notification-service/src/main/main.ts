@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from "./app.module";
-import { MicroserviceOptions, Transport } from "@nestjs/microservices";
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { AppModule } from './app.module';
 
 async function bootstrap () {
   const app = await NestFactory.create(AppModule)
@@ -12,12 +12,12 @@ async function bootstrap () {
         brokers: ['localhost:9092'],
       },
       consumer: {
-        groupId: 'chat-consumer',
+        groupId: 'notification-consumer'
       },
     }
   })
 
-  await app.startAllMicroservices();
-  await app.listen(3002)
+  await app.startAllMicroservices()
+  await app.listen(3001)
 }
 bootstrap();
